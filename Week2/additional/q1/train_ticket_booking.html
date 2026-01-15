@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Train Ticket Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="train_ticket_booking.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Train Ticket Booking</h1>
+
+    <form>
+
+        <div class="row">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter full name" required>
+        </div>
+
+        <div class="row">
+            <label>Mobile Number</label>
+            <input type="tel" placeholder="10-digit number" required>
+        </div>
+
+        <div class="row">
+            <label>Email</label>
+            <input type="email" placeholder="example@mail.com">
+        </div>
+
+        <div class="row">
+            <label>From Station</label>
+            <input type="text" placeholder="Source station" required>
+        </div>
+
+        <div class="row">
+            <label>To Station</label>
+            <input type="text" placeholder="Destination station" required>
+        </div>
+
+        <div class="row">
+            <label>Date of Journey</label>
+            <input type="date" required>
+        </div>
+
+        <div class="row">
+            <label>Class</label>
+            <select required>
+                <option value="">Select Class</option>
+                <option>Sleeper</option>
+                <option>AC 3 Tier</option>
+                <option>AC 2 Tier</option>
+                <option>First Class</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label>Quota</label>
+            <select required>
+                <option value="">Select Quota</option>
+                <option>General</option>
+                <option>Tatkal</option>
+                <option>Ladies</option>
+                <option>Senior Citizen</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label>Gender</label>
+            <div class="options">
+                <input type="radio" name="gender" required> Male
+                <input type="radio" name="gender"> Female
+                <input type="radio" name="gender"> Other
+            </div>
+        </div>
+
+        <div class="row">
+            <label>Number of Passengers</label>
+            <input type="number" min="1" max="6" required>
+        </div>
+
+        <div class="row">
+            <label>Meal Preference</label>
+            <div class="options">
+                <input type="checkbox"> Veg
+                <input type="checkbox"> Non-Veg
+            </div>
+        </div>
+
+        <div class="row">
+            <label>Address</label>
+            <textarea rows="3" placeholder="Enter address"></textarea>
+        </div>
+
+        <div class="row checkbox">
+            <input type="checkbox" required>
+            <span>I agree to the terms and conditions</span>
+        </div>
+
+        <div class="buttons">
+            <button type="submit">Book Ticket</button>
+            <button type="reset" class="reset">Reset</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

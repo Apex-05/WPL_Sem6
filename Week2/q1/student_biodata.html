@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Bio-Data Form</title>
+
+    <link rel="stylesheet" href="biodata.css">
+</head>
+
+<body>
+
+<h1>Student Bio-Data Form</h1>
+
+<form>
+<table>
+
+    <tr>
+        <td><label>Full Name</label></td>
+        <td><input type="text" placeholder="Enter full name" required></td>
+    </tr>
+
+    <tr>
+        <td><label>Roll Number</label></td>
+        <td><input type="number" required></td>
+    </tr>
+
+    <tr>
+        <td><label>Date of Birth</label></td>
+        <td><input type="date" required></td>
+    </tr>
+
+    <tr>
+        <td><label>Gender</label></td>
+        <td>
+            <input type="radio" name="gender" required> Male
+            <input type="radio" name="gender"> Female
+            <input type="radio" name="gender"> Other
+        </td>
+    </tr>
+
+    <tr>
+        <td><label>Email</label></td>
+        <td><input type="email" placeholder="example@mail.com" required></td>
+    </tr>
+
+    <tr>
+        <td><label>Phone Number</label></td>
+        <td><input type="tel" placeholder="10-digit mobile number" required></td>
+    </tr>
+
+    <tr>
+        <td><label>Blood Group</label></td>
+        <td>
+            <select required>
+                <option value="">Select</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label>Department</label></td>
+        <td>
+            <select required>
+                <option value="">Select</option>
+                <option>Computer Science</option>
+                <option>Information Technology</option>
+                <option>Electronics</option>
+                <option>Mechanical</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label>Year of Study</label></td>
+        <td>
+            <select required>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>Final Year</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label>Languages Known</label></td>
+        <td>
+            <input type="checkbox"> English
+            <input type="checkbox"> Hindi
+            <input type="checkbox"> Other
+        </td>
+    </tr>
+
+    <tr>
+        <td><label>Skills</label></td>
+        <td>
+            <input type="checkbox"> HTML
+            <input type="checkbox"> CSS
+            <input type="checkbox"> JavaScript
+            <input type="checkbox"> Python
+        </td>
+    </tr>
+
+    <tr>
+        <td><label>Address</label></td>
+        <td><textarea rows="3" placeholder="Enter address"></textarea></td>
+    </tr>
+
+    <tr>
+        <td><label>Upload Photo</label></td>
+        <td><input type="file" accept="image/*"></td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <input type="checkbox" required>
+            I declare that the above information is true to the best of my knowledge.
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2" class="center">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </td>
+    </tr>
+
+</table>
+</form>
+
+</body>
+</html>
