@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Time Greeting Clock</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Segoe UI,sans-serif;
+    color:white
+}
+main{
+    width:380px;
+    padding:35px;
+    text-align:center;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(18px);
+    border-radius:22px;
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.4),
+        inset 0 0 30px rgba(255,255,255,.08)
+}
+h1{
+    font-size:26px;
+    letter-spacing:1px;
+    margin-bottom:15px
+}
+.clock-glass{
+    margin:20px auto;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:rgba(255,255,255,0.08);
+    box-shadow:
+        inset 0 0 25px rgba(255,255,255,.2),
+        0 0 35px rgba(0,255,255,.3)
+}
+time{
+    font-size:40px;
+    letter-spacing:3px;
+    font-weight:600
+}
+#date{
+    margin-top:8px;
+    font-size:14px;
+    opacity:.85
+}
+#greet{
+    margin-top:25px;
+    font-size:20px;
+    color:#feca57;
+    animation:fade .8s ease
+}
+@keyframes fade{
+    from{opacity:0;transform:translateY(10px)}
+    to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+
+<body onload="startClock();setTimeout(wish,200)">
+
+<main>
+<h1>Welcome</h1>
+
+<div class="clock-glass">
+    <time id="clock"></time>
+    <div id="date"></div>
+</div>
+
+<div id="greet"></div>
+</main>
+
+<script>
+function updateClock(){
+    const d=new Date()
+    let h=d.getHours(),m=d.getMinutes(),s=d.getSeconds()
+    h=h<10?"0"+h:h
+    m=m<10?"0"+m:m
+    s=s<10?"0"+s:s
+    document.getElementById("clock").innerText=h+":"+m+":"+s
+    document.getElementById("date").innerText=d.toDateString()
+}
+
+function startClock(){
+    updateClock()
+    setInterval(updateClock,1000)
+}
+
+function wish(){
+    const h=new Date().getHours()
+    let g=""
+    if(h>=5&&h<12)g="Good Morning"
+    else if(h>=12&&h<17)g="Good Afternoon"
+    else if(h>=17&&h<21)g="Good Evening"
+    else g="Good Night"
+    alert(g)
+    document.getElementById("greet").innerText=g
+}
+</script>
+
+</body>
+</html>

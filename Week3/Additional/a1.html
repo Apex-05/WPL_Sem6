@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FONT GLOW</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        overflow: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,0,255,0.2), transparent 40%);
+        animation: spin 10s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .glass {
+        position: relative;
+        padding: 60px 100px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 40px rgba(255,255,255,0.2);
+        z-index: 1;
+    }
+
+    #text {
+        font-size: 5pt;
+        font-weight: bold;
+        color: red;
+        text-shadow:
+            0 0 10px currentColor,
+            0 0 20px currentColor,
+            0 0 40px currentColor;
+        transition: color 0.3s;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="glass">
+    <div id="text">FONT+++</div>
+</div>
+
+<script>
+    let size = 5;
+    let growing = true;
+    const text = document.getElementById("text");
+
+    setInterval(() => {
+        if (growing) {
+            size++;
+            text.textContent = "FONT+++";
+            text.style.color = "red";
+            if (size >= 40) growing = false;
+        } else {
+            size--;
+            text.textContent = "FONT---";
+            text.style.color = "deepskyblue";
+            if (size <= 5) growing = true;
+        }
+        text.style.fontSize = size + "pt";
+    }, 200);
+</script>
+
+</body>
+</html>

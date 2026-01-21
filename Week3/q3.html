@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Grade Calculator</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#1f4037,#99f2c8);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Segoe UI,sans-serif
+}
+main{
+    width:380px;
+    padding:30px;
+    background:rgba(255,255,255,0.9);
+    border-radius:18px;
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+    text-align:center
+}
+h1{
+    margin-bottom:20px
+}
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px
+}
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:25px;
+    background:#1f4037;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer
+}
+button:hover{
+    opacity:.9
+}
+.result{
+    margin-top:20px;
+    font-size:17px;
+    line-height:1.6
+}
+</style>
+</head>
+
+<body>
+
+<main>
+<h1>Grade Calculator</h1>
+
+<input type="number" id="m1" placeholder="Subject 1 Marks">
+<input type="number" id="m2" placeholder="Subject 2 Marks">
+<input type="number" id="m3" placeholder="Subject 3 Marks">
+<input type="number" id="m4" placeholder="Subject 4 Marks">
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="output"></div>
+</main>
+
+<script>
+function calculate(){
+    let m1=Number(document.getElementById("m1").value)
+    let m2=Number(document.getElementById("m2").value)
+    let m3=Number(document.getElementById("m3").value)
+    let m4=Number(document.getElementById("m4").value)
+
+    let total=m1+m2+m3+m4
+    let avg=total/4
+    let grade=""
+    let status=""
+
+    if(avg>90) grade="A"
+    else if(avg>80) grade="B"
+    else if(avg>70) grade="C"
+    else if(avg>60) grade="D"
+    else grade="Nil"
+
+    status = avg>60 ? "Pass" : "Fail"
+
+    document.getElementById("output").innerHTML =
+    "Total Marks: " + total + "<br>" +
+    "Average Marks: " + avg.toFixed(2) + "<br>" +
+    "Result: " + status + "<br>" +
+    "Grade: " + grade;
+
+}
+</script>
+
+</body>
+</html>
