@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Square Calculator</title>
+</head>
+<body>
+    <h1>Square Calculator</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Enter a number:</label>
+        <input type="text" name="number" value="{{ number }}">
+        <button type="submit">Calculate Square</button>
+    </form>
+
+    {% if result is not None %}
+        <h2>Result: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>

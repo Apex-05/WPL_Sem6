@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Produce Bill</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        select, input[type="text"] {
+            width: 200px;
+            height: 30px;
+            margin: 8px;
+        }
+
+        button {
+            padding: 8px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Mobile Store</h2>
+
+<select id="brand">
+    <option value="0">Select Brand</option>
+    <option value="10000">HP</option>
+    <option value="8000">Nokia</option>
+    <option value="12000">Samsung</option>
+    <option value="9000">Motorola</option>
+    <option value="15000">Apple</option>
+</select>
+
+<br>
+
+<input type="checkbox" id="mobile" value="5000"> Mobile
+<input type="checkbox" id="laptop" value="20000"> Laptop
+
+<br>
+
+<input type="text" id="qty" placeholder="Enter Quantity">
+
+<br><br>
+
+<button id="bill">Produce Bill</button>
+
+<script>
+    $(document).ready(function () {
+        $("#bill").click(function () {
+            var brandPrice = Number($("#brand").val());
+            var itemPrice = 0;
+
+            if ($("#mobile").is(":checked")) {
+                itemPrice += Number($("#mobile").val());
+            }
+
+            if ($("#laptop").is(":checked")) {
+                itemPrice += Number($("#laptop").val());
+            }
+
+            var qty = Number($("#qty").val());
+            var total = (brandPrice + itemPrice) * qty;
+
+            alert("Total Amount: ₹ " + total);
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Promotion Eligibility</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input[type=date], select {
+            padding: 8px 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+        input[type=date]:focus, select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            padding: 10px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .yes { color: green; }
+        .no { color: red; }
+        .experience { font-size: 16px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Employee Promotion Check</h2>
+
+    <form method="post" id="promotionForm">
+        {% csrf_token %}
+
+        Employee ID:
+        <select name="empid" id="empid">
+            <option>EMP001</option>
+            <option>EMP002</option>
+            <option>EMP003</option>
+            <option>EMP004</option>
+        </select>
+        <br>
+
+        Date of Joining:
+        <input type="date" name="doj" id="doj" required>
+        <br>
+
+        <button type="submit">Am I Eligible for Promotion</button>
+    </form>
+
+    <div class="experience" id="experienceDisplay"></div>
+    <div class="result {% if result == 'YES' %}yes{% elif result == 'NO' %}no{% endif %}" id="resultLabel">
+        {% if result %}
+            Eligibility: {{ result }}
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('promotionForm');
+    const experienceDisplay = document.getElementById('experienceDisplay');
+    const resultLabel = document.getElementById('resultLabel');
+
+    form.addEventListener('submit', function(e){
+        const dojInput = document.getElementById('doj').value;
+        if(!dojInput) return;
+
+        e.preventDefault();
+
+        const doj = new Date(dojInput);
+        const today = new Date();
+        const diff = today - doj;
+        const experience = Math.floor(diff / (1000*60*60*24*365));
+
+        experienceDisplay.innerText = `Experience: ${experience} years`;
+
+        if(experience > 5){
+            resultLabel.innerText = "Eligibility: YES";
+            resultLabel.className = "result yes";
+        } else {
+            resultLabel.innerText = "Eligibility: NO";
+            resultLabel.className = "result no";
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type=text], input[type=date], input[type=email], input[type=number] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1.5px solid #ccc;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input[type=text]:focus, input[type=date]:focus, input[type=email]:focus, input[type=number]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        textarea {
+            width: 100%;
+            font-family: monospace;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .percentage {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #007BFF;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Details Form</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" required>
+
+        <label for="address">Address:</label>
+        <input type="text" name="address" required>
+
+        <label for="contact">Contact Number:</label>
+        <input type="text" name="contact" required>
+
+        <label for="email">Email ID:</label>
+        <input type="email" name="email" required>
+
+        <label for="english">English Marks:</label>
+        <input type="number" name="english" required min="0" max="100">
+
+        <label for="physics">Physics Marks:</label>
+        <input type="number" name="physics" required min="0" max="100">
+
+        <label for="chemistry">Chemistry Marks:</label>
+        <input type="number" name="chemistry" required min="0" max="100">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+
+    <label for="details">Student Details:</label>
+    <textarea rows="10" readonly>{{ details }}</textarea>
+
+    {% if percentage %}
+        <span class="percentage">Total Percentage: {{ percentage }}%</span>
+    {% endif %}
+</div>
+
+</body>
+</html>
