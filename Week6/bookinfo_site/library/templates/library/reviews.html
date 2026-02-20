@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews</title>
+    <link rel="stylesheet" href="{% static 'library/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Book Reviews</h2>
+
+    <p>⭐ ⭐ ⭐ ⭐ ⭐ - Amazing story and characters!</p>
+    <p>⭐ ⭐ ⭐ ⭐ - Very engaging and well written.</p>
+    <p>⭐ ⭐ ⭐ ⭐ ⭐ - A must read for fiction lovers.</p>
+
+    <a href="{% url 'home' %}" class="back">Back to Home</a>
+</div>
+
+</body>
+</html>

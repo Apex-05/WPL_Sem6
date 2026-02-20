@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Information</title>
+    <link rel="stylesheet" href="{% static 'library/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>The Great Adventure</h1>
+
+    <img src="{% static 'library/book.jpg' %}" class="cover">
+
+    <div class="links">
+        <a href="{% url 'metadata' %}">Metadata</a>
+        <a href="{% url 'reviews' %}">Reviews</a>
+        <a href="{% url 'publisher' %}">Publisher Info</a>
+    </div>
+</div>
+
+</body>
+</html>

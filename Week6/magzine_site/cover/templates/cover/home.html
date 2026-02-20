@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Magazine Cover Generator</title>
+    <link rel="stylesheet" href="{% static 'cover/style.css' %}">
+</head>
+<body>
+
+<div class="main-container">
+
+    <h1 class="heading">Magazine Cover Generator</h1>
+
+    <form method="POST" class="form-box">
+        {% csrf_token %}
+
+        <input type="text" name="title" placeholder="Main Title" required>
+        <input type="text" name="subtitle" placeholder="Subtitle" required>
+        <input type="text" name="tagline" placeholder="Tagline" required>
+
+        <div class="row">
+            <label>Background Color</label>
+            <input type="color" name="bgcolor" required>
+        </div>
+
+        <div class="row">
+            <label>Font Color</label>
+            <input type="color" name="fontcolor" required>
+        </div>
+
+        <div class="row">
+            <label>Font Size</label>
+            <input type="number" name="fontsize" min="20" max="80" required>
+        </div>
+
+        <div class="row">
+            <label>Select Image</label>
+            <select name="image">
+                <option value="https://picsum.photos/600/400">Nature</option>
+                <option value="https://picsum.photos/601/400">Technology</option>
+                <option value="https://picsum.photos/602/400">Fashion</option>
+            </select>
+        </div>
+
+        <button type="submit">Generate Cover</button>
+    </form>
+
+    {% if title %}
+    <div class="cover"
+         style="background-color: {{ bgcolor }};
+                color: {{ fontcolor }};">
+
+        <div class="cover-content" style="font-size: {{ fontsize }}px;">
+            <h1>{{ title }}</h1>
+            <h3>{{ subtitle }}</h3>
+
+            <img src="{{ image }}" alt="Magazine Image">
+
+            <p>{{ tagline }}</p>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
