@@ -1,0 +1,14 @@
+<h2>Books List</h2>
+
+{% for book in books %}
+    <div style="border:1px solid black; margin:10px; padding:10px;">
+        <h3>{{ book.title }}</h3>
+        <p><b>Publication Date:</b> {{ book.publication_date }}</p>
+        <p><b>Publisher:</b> {{ book.publisher.name }}</p>
+        <p><b>Authors:</b>
+            {% for author in book.authors.all %}
+                {{ author.first_name }} {{ author.last_name }},
+            {% endfor %}
+        </p>
+    </div>
+{% endfor %}

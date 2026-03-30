@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Order</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:12px;
+width:420px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+color:#333;
+}
+
+.section{
+margin-bottom:20px;
+}
+
+.option{
+margin:6px 0;
+}
+
+input[type="number"]{
+width:100%;
+padding:10px;
+margin-top:5px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#2a5298;
+color:white;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1e3c72;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Order Product</h2>
+
+<form method="POST">
+{% csrf_token %}
+
+<div class="section">
+<b>Select Brand</b>
+
+<div class="option"><input type="radio" name="brand" value="HP"> HP</div>
+<div class="option"><input type="radio" name="brand" value="Nokia"> Nokia</div>
+<div class="option"><input type="radio" name="brand" value="Samsung"> Samsung</div>
+<div class="option"><input type="radio" name="brand" value="Motorola"> Motorola</div>
+<div class="option"><input type="radio" name="brand" value="Apple"> Apple</div>
+</div>
+
+<div class="section">
+<b>Select Item</b>
+
+<div class="option"><input type="checkbox" name="item" value="Mobile"> Mobile</div>
+<div class="option"><input type="checkbox" name="item" value="Laptop"> Laptop</div>
+</div>
+
+<div class="section">
+<b>Quantity</b>
+<input type="number" name="qty" required>
+</div>
+
+<button type="submit">Produce Bill</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

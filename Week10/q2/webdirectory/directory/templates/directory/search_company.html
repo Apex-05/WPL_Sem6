@@ -1,0 +1,122 @@
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #eef2f7, #e0e7ff);
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 40px 20px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #334155;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #1e293b;
+    margin-top: 20px;
+}
+
+form {
+    margin-top: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #cbd5f5;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 5px rgba(59,130,246,0.5);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #059669;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+li {
+    background: #f8fafc;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    padding: 10px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 6px;
+}
+
+a:hover {
+    background: #2563eb;
+}
+</style>
+
+<div class="wrapper">
+    <div class="container">
+        <h2>Search Employees by Company</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+
+        {% if results %}
+            <h3>Results:</h3>
+            <ul>
+                {% for r in results %}
+                    <li>{{ r.person }} - {{ r.city }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <a href="/">Home</a>
+    </div>
+</div>

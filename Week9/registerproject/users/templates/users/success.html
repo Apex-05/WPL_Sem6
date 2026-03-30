@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Successful</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    width:380px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.success-icon{
+    font-size:50px;
+    color:#2ecc71;
+    margin-bottom:10px;
+}
+
+h2{
+    color:#333;
+    margin-bottom:10px;
+}
+
+h3{
+    color:#1e3c72;
+    margin-bottom:25px;
+}
+
+.info{
+    text-align:left;
+    margin-top:15px;
+}
+
+.info p{
+    background:#f5f7fb;
+    padding:12px;
+    border-radius:6px;
+    margin:10px 0;
+    font-size:14px;
+    border-left:4px solid #2a5298;
+}
+
+.button{
+    margin-top:25px;
+}
+
+.button a{
+    text-decoration:none;
+    padding:10px 20px;
+    background:#2a5298;
+    color:white;
+    border-radius:6px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.button a:hover{
+    background:#1e3c72;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="success-icon">✔</div>
+
+<h2>Registration Successful</h2>
+
+<h3>Welcome {{ username }}</h3>
+
+<div class="info">
+
+<p><strong>Email:</strong> {{ email }}</p>
+
+<p><strong>Contact Number:</strong> {{ contact }}</p>
+
+</div>
+
+<div class="button">
+<a href="/">Back to Registration</a>
+</div>
+
+</div>
+
+</body>
+</html>

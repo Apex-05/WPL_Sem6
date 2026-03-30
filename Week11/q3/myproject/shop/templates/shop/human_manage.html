@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Human Management</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; line-height: 1.6; }
+        .container { max-width: 500px; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+        input, textarea, select { width: 100%; margin-bottom: 10px; padding: 8px; box-sizing: border-box; }
+        button { padding: 10px 15px; cursor: pointer; border: none; border-radius: 4px; }
+        .btn-update { background-color: #28a745; color: white; }
+        .btn-delete { background-color: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Human Records</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <label>Select Human (First Name Only):</label>
+            <select name="human_id" id="human_select" required>
+                <option value="">-- Choose a Person --</option>
+                {% for h in humans %}
+                    <option value="{{ h.id }}">{{ h.first_name }}</option>
+                {% endfor %}
+            </select>
+
+            <hr>
+
+            <input type="text" name="first_name" id="first_name" placeholder="First Name">
+            <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+            <input type="text" name="phone" id="phone" placeholder="Phone">
+            <textarea name="address" id="address" placeholder="Address"></textarea>
+            <input type="text" name="city" id="city" placeholder="City">
+
+            <button type="submit" name="update" class="btn-update">Update</button>
+            <button type="submit" name="delete" class="btn-delete" onclick="return confirm('Delete this record?')">Delete</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('human_select').addEventListener('change', function() {
+            const id = this.value;
+            if (!id) return;
+
+            // Fetch record details without reloading the page
+            fetch(`/human/details/${id}/`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('first_name').value = data.first_name;
+                    document.getElementById('last_name').value = data.last_name;
+                    document.getElementById('phone').value = data.phone;
+                    document.getElementById('address').value = data.address;
+                    document.getElementById('city').value = data.city;
+                });
+        });
+    </script>
+</body>
+</html>

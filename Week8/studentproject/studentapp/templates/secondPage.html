@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Second Page</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .details {
+            text-align: left;
+            background: #f7f9fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .details span {
+            font-weight: bold;
+            color: #444;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background: #667eea;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Student Details</h2>
+
+        <div class="details">
+            <span>Name:</span> {{ name }} <br>
+            <span>Roll:</span> {{ roll }} <br>
+            <span>Subject:</span> {{ subject }}
+        </div>
+
+        <a href="{% url 'first' %}" class="btn">Go Back</a>
+    </div>
+</body>
+</html>

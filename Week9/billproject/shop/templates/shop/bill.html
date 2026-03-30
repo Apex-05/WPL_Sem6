@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bill</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:12px;
+width:400px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+h2{
+color:#333;
+margin-bottom:20px;
+}
+
+.info{
+background:#f4f6fb;
+padding:12px;
+border-radius:6px;
+margin:10px 0;
+text-align:left;
+}
+
+.total{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+color:#2a5298;
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+background:#2a5298;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1e3c72;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Bill Summary</h2>
+
+<div class="info"><b>Brand:</b> {{ brand }}</div>
+
+<div class="info">
+<b>Items:</b>
+{% for 
+    i in items %}
+{{ i }}
+{% endfor %}
+</div>
+
+<div class="info"><b>Quantity:</b> {{ qty }}</div>
+
+<div class="total">
+Total Amount = ₹ {{ total }}
+</div>
+
+<a href="/"><button>New Order</button></a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Feedback Form</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#1e3c72,#2a5298);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:12px;
+width:420px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.section{
+margin-bottom:15px;
+}
+
+input,select,textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#2a5298;
+color:white;
+border:none;
+border-radius:6px;
+margin-top:10px;
+}
+
+button:hover{
+background:#1e3c72;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Software Feedback Form</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="section">
+<label>Student Name</label>
+<input type="text" name="name" required>
+</div>
+
+<div class="section">
+<label>Sex</label><br>
+<input type="radio" name="sex" value="Male"> Male
+<input type="radio" name="sex" value="Female"> Female
+</div>
+
+<div class="section">
+<label>Select Course</label>
+
+<select name="course">
+<option>ASP-XML</option>
+<option>DotNET</option>
+<option>JavaPro</option>
+<option>Unix</option>
+<option>C</option>
+<option>C++</option>
+</select>
+
+</div>
+
+<div class="section">
+<label>Technical Coverage</label><br>
+
+<input type="radio" name="tech" value="Excellent"> Excellent<br>
+<input type="radio" name="tech" value="Good"> Good<br>
+<input type="radio" name="tech" value="Average"> Average<br>
+<input type="radio" name="tech" value="Poor"> Poor
+
+</div>
+
+<div class="section">
+<label>Suggestions</label>
+<textarea name="suggestion"></textarea>
+</div>
+
+<button type="submit">Submit Form</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

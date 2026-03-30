@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Registration</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    width:350px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.container h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#333;
+}
+
+label{
+    font-weight:600;
+    font-size:14px;
+    color:#444;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    margin-bottom:5px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+.error{
+    color:red;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#2a5298;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1e3c72;
+}
+
+</style>
+
+<script>
+
+function validateForm(){
+
+let email = document.getElementById("email").value;
+let contact = document.getElementById("contact").value;
+
+let emailError = document.getElementById("emailError");
+let contactError = document.getElementById("contactError");
+
+emailError.innerHTML = "";
+contactError.innerHTML = "";
+
+let valid = true;
+
+/* Email validation */
+
+if(email != "" && !email.includes("@")){
+    emailError.innerHTML = "Email must contain @ symbol";
+    valid = false;
+}
+
+/* Contact validation */
+
+let contactPattern = /^[1-9][0-9]{9}$/;
+
+if(contact != "" && !contactPattern.test(contact)){
+    contactError.innerHTML = "Contact must be 10 digits and cannot start with 0";
+    valid = false;
+}
+
+return valid;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Create Account</h2>
+
+<form method="POST" onsubmit="return validateForm()">
+
+{% csrf_token %}
+
+<label>Username (Required)</label>
+<input type="text" name="username" required>
+
+<label>Password</label>
+<input type="password" name="password">
+
+<label>Email</label>
+<input type="text" id="email" name="email">
+<div id="emailError" class="error"></div>
+
+<label>Contact Number</label>
+<input type="text" id="contact" name="contact">
+<div id="contactError" class="error"></div>
+
+<button type="submit">Register</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

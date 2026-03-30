@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Enrollment</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        .form-section { background: #f4f4f4; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        input { display: block; margin-bottom: 10px; padding: 8px; width: 300px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #007bff; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="form-section">
+        <h2>Enter Student Information</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="student_id" placeholder="Student ID" required>
+            <input type="text" name="name" placeholder="Student Name" required>
+            <input type="text" name="course" placeholder="Course Name" required>
+            <label>Date of Birth:</label>
+            <input type="date" name="dob" required>
+            <button type="submit" style="padding: 10px 20px; cursor: pointer;">Submit Data</button>
+        </form>
+    </div>
+
+    <h2>Registered Students</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <td>{{ s.student_id }}</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.course }}</td>
+                <td>{{ s.dob }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No students registered yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
