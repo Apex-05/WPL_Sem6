@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Entries</title>
+    <style>
+        body { text-align:center; }
+
+table, th, td {
+    text-align:center;
+    border:1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    margin: auto;   /* THIS CENTERS THE TABLE */
+}
+
+tr:hover {
+    background-color: yellow;
+}
+    </style>
+</head>
+<body>
+    <h2>All Entries</h2>
+
+    {% if error %}  
+    <p>{{ error }}</p>
+    {% endif %}
+
+    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Rating</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.rating }}</td>
+            <td>{{ i.price }}</td>
+            <td><a href="/detail/{{ i.id }}/">View</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p>Average Rating: {{ avg|floatformat:2 }}</p>
+    <p>
+        <a href="/">Home</a> | <a href="/suggestions/">Add Entry</a>
+    </p>
+</body>
+</html>

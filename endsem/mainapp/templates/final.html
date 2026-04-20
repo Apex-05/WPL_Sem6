@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Entry Details</title>
+    <style>
+        body { text-align: center;}
+
+    </style>
+</head>
+<body>
+    <h2>Entry Details</h2>
+    <p><strong>Name:</strong> {{ request.session.name }}</p>
+    <p><strong>Price:</strong> {{ request.session.price }}</p>
+    <a href="/viewsuggestions/">Back</a>
+</body>
+</html>

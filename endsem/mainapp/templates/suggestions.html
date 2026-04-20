@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Entry</title>
+    <style>
+    body { 
+        text-align: center; 
+        margin-top: 70px; 
+    }
+
+    button {
+        background-color: blue;
+        color: white;
+    }
+    </style>
+</head>
+<body>
+    <h2>Add Entry</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <p>
+        <a href="/">Home</a> | <a href="/viewsuggestions/">View Entries</a>
+    </p>
+</body>
+</html>
